@@ -365,8 +365,7 @@ namespace RockWeb.Blocks.Finance
 
             // pledge information
             var pledges = new FinancialPledgeService( rockContext ).Queryable().AsNoTracking()
-                                .Where( p => p.PersonAliasId.HasValue && personAliasIds.Contains(p.PersonAliasId.Value)
-                                    && ( p.StartDate.Year == statementYear || p.EndDate.Year == statementYear ) )
+                                .Where( p => p.PersonAliasId.HasValue && personAliasIds.Contains(p.PersonAliasId.Value) )
                                 .GroupBy( p => p.Account )
                                 .Select( g => new PledgeSummary
                                 {
